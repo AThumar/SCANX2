@@ -180,24 +180,59 @@
     }
 
     // ✅ Handle PDF Upload
-       // ✅ Handle Multiple PDF Uploads
-    function uploadPDFs() {
+    //    ✅ Handle Multiple PDF Uploads
+    // function uploadPDFs() {
+    //     var fileInput = document.getElementById("pdfInput");
+    //     var files = fileInput.files;
+
+    //     if (files.length > 0) {
+
+    //         for (let i = 0; i < files.length; i++) {
+    //                         var fileList = "<p>📄 Uploaded PDFs:</p><ul>";
+
+    //             fileList += `<li class="file-item">✔ ${files[i].name}</li>`;
+    //         }
+
+    //         fileList += "</ul>";
+    // document.getElementById("pdf-display").innerHTML += fileList;
+    //             closeUploadDialog(); Close the modal after uploading
+    //     } else {
+    //         alert("Please select at least one PDF file.");
+    //     }
+    // }
+        function uploadPDFs() {
         var fileInput = document.getElementById("pdfInput");
         var files = fileInput.files;
+        var pdfDisplay = document.getElementById("pdf-display");
 
         if (files.length > 0) {
+            // ✅ Add heading only if it doesn't exist
+            if (!document.getElementById("pdf-heading")) {
+                var heading = document.createElement("p");
+                heading.id = "pdf-heading";
+                heading.innerHTML = "📄 Uploaded PDFs:";
+                pdfDisplay.appendChild(heading);
 
-            for (let i = 0; i < files.length; i++) {
-                            var fileList = "<p>📄 Uploaded PDFs:</p><ul>";
-
-                fileList += `<li class="file-item">✔ ${files[i].name}</li>`;
+                var fileList = document.createElement("ul");
+                fileList.id = "pdf-list"; // Assign an ID to the list
+                pdfDisplay.appendChild(fileList);
             }
 
-            fileList += "</ul>";
-    document.getElementById("pdf-display").innerHTML += fileList;
-                closeUploadDialog(); // Close the modal after uploading
+            // ✅ Get the existing file list
+            var fileList = document.getElementById("pdf-list");
+
+            // ✅ Append new files
+            for (let i = 0; i < files.length; i++) {
+                var listItem = document.createElement("li");
+                listItem.className = "file-item";
+                listItem.innerHTML = `✔ ${files[i].name}`;
+                fileList.appendChild(listItem);
+            }
+
+            closeUploadDialog(); // Close the modal after uploading
         } else {
             alert("Please select at least one PDF file.");
         }
     }
+
 </script>
