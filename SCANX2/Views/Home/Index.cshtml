@@ -3,12 +3,89 @@
 }
 
 <div class="container text-center mt-5">
-    <h1><span class="fw-bold">Simplify <span class="text-danger">PDF</span> <span class="text-primary">Note</span>-Taking</span></h1>
-    <h2 class="fw-light">with AI-Powered</h2>
-    <p class="lead">Elevate your note-taking experience with our AI-powered PDF app. Seamlessly extract key insights, summaries, and annotations from any PDF with just a few clicks.</p>
+    <!-- ✅ Logo -->
+    <img src="~/images/logo.png" alt="ScanX Logo" class="logo">
 
+    <!-- ✅ Headings -->
+    @* <h1 class="fw-bold display-4 mt-3"> *@
+    @*     Simplify <span class="text-danger">PDF</span> <span class="text-primary">Note</span>-Taking *@
+    @* </h1> *@
+    @* <h2 class="fw-light text-dark">with AI-Powered</h2> *@
+    <div class="center-heading">
+        <h1 class="fw-bold display-4 mt-3">
+            Simplify <span class="text-danger">PDF</span> <span class="text-primary">Note</span>-Taking with AI-Powered
+        </h1>
+    </div>
+
+
+
+
+    <!-- ✅ Description -->
+    <p class="lead text-muted">
+        Elevate your note-taking experience with our AI-powered PDF app. Seamlessly extract key insights, summaries, and annotations from any PDF with just a few clicks.
+    </p>
+
+    <!-- ✅ CTA Buttons -->
     <div class="mt-4">
-        <a asp-controller="Account" asp-action="Signup">Sign Up</a>
-        <a href="#" class="btn btn-light btn-lg border">Learn More</a>
+        <a asp-controller="Account" asp-action="Signup" class="btn btn-dark btn-lg rounded-pill px-4">Get Started</a>
+        <a href="#" class="btn btn-light btn-lg rounded-pill px-4">Learn More</a>
     </div>
 </div>
+
+<style>
+    /* ✅ Center Content */
+    .container {
+        max-width: 900px; /* Ensures content is not too wide */
+        margin: 0 auto; /* Centers the container itself */
+        text-align: center; /* Ensures text inside is centered */
+    }
+
+
+    /* ✅ Logo */
+    .logo {
+        height: 80px;
+    }
+
+    .center-heading {
+        display: flex;
+        justify-content: center; /* Centers horizontally */
+        align-items: center; /* Centers vertically if needed */
+        text-align: center;
+        width: 100%;
+    }
+
+    /* ✅ Typography */
+    h1 {
+        font-size: 2rem; /* Adjust if too large */
+        white-space: nowrap; /* Prevents text from wrapping */
+        display: inline-block; /* Ensures proper centering */
+        text-align: center; /* Center text inside the block */
+    }
+
+
+
+    .text-danger {
+        color: #FF4A4A; /* Red for "PDF" */
+    }
+
+    .text-primary {
+        color: #4A90E2; /* Blue for "Note" */
+    }
+
+    /* ✅ Buttons */
+    .btn-lg {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px 32px;
+    }
+
+    .btn-dark {
+        background: black;
+        border: none;
+    }
+
+    .btn-light {
+        background: #E5E7EB;
+        border: none;
+    }
+</style>
