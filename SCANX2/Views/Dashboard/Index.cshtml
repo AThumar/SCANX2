@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Dashboard - ScanX";
+}
+
+<div class="dashboard-container">
+    <!-- ✅ Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-logo">
+            <img src="~/images/logo.png" alt="ScanX Logo">
+        </div>
+        <ul>
+            <li><a href="#">📂 Upload PDF</a></li>
+            <li><a href="#">📌 Workspace</a></li>
+            <li><a href="#">⚡ Upgrade</a></li>
+        </ul>
+    </nav>
+
+    <!-- ✅ Main Content -->
+    <div class="main-content">
+        <h2>Welcome to Your Dashboard</h2>
+        <p>Select an option from the left menu to get started.</p>
+    </div>
+</div>
+
+<style>
+    /* ✅ Main Layout */
+    .dashboard-container {
+        display: flex;
+        height: 100vh; /* Full-screen height */
+        overflow: hidden;
+    }
+
+    .sidebar-logo img {
+        width: 150px; /* Adjust size */
+        margin-bottom: 20px;
+    }
+    /* ✅ Sidebar */
+    .sidebar {
+        width: 250px;
+        background:#ffffff;
+        color: white;
+        padding: 20px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .sidebar li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            background: #333;
+            padding: 12px;
+            width: 100%;
+            display: block;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+            .sidebar a:hover {
+                background: #444;
+            }
+
+    /* ✅ Main Content */
+    .main-content {
+        flex: 1;
+        margin-left: 250px;
+        padding: 20px;
+        overflow: hidden; /* Prevents scrolling */
+        background: #f5f5f5;
+        height: 100vh;
+    }
+</style>

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using SCANX2.Models;  // Add this line to fix "User not found" error
+using Microsoft.AspNetCore.Http; // Required for session
 
 public class AccountController : Controller
 {
@@ -17,6 +18,21 @@ public class AccountController : Controller
     {
         return View();
     }
+    //[HttpPost]
+    //public IActionResult Login(string Email, string Password)
+    //{
+    //    var user = _context.Users.FirstOrDefault(u => u.Email == Email);
+
+    //    if (user == null || !VerifyPassword(user.Password, Password))
+    //    {
+    //        ModelState.AddModelError("", "Invalid email or password");
+    //        return View();
+    //    }
+
+    //    //return RedirectToAction("Index", "Home");
+    //    return RedirectToAction("Index", "Dashboard");
+
+    //}
     [HttpPost]
     public IActionResult Login(string Email, string Password)
     {
@@ -28,8 +44,14 @@ public class AccountController : Controller
             return View();
         }
 
-        return RedirectToAction("Index", "Home");
+        // ✅ Store user session
+        HttpContext.Session.SetString("UserEmail", user.Email);
+        HttpContext.Session.SetString("UserName", user.Name);
+
+        // ✅ Redirect to Dashboard
+        return RedirectToAction("Index", "Dashboard");
     }
+
 
     private bool VerifyPassword(string storedPassword, string enteredPassword)
     {

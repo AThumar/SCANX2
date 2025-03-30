@@ -9,16 +9,36 @@
 </head>
 <body>
 
-    <!-- ✅ Custom Glassmorphism Navbar -->
-    <nav class="custom-navbar">
-        <ul class="nav-links">
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Solution</a></li>
-            <li><a href="#" class="nav-logo"><img src="~/images/logo.png" alt="ScanX Logo"></a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-    </nav>
+    @{
+        var hideNavbar = Context.Request.Path.StartsWithSegments("/Dashboard");
+    }
+
+    @if (!hideNavbar)
+    {
+        <nav class="custom-navbar">
+            <ul class="nav-links">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Solution</a></li>
+                <li><a href="#" class="nav-logo"><img src="~/images/logo.png" alt="ScanX Logo"></a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    }
+
+    @if (!hideNavbar)
+    {
+        <nav class="custom-navbar">
+            <ul class="nav-links">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Solution</a></li>
+                <li><a href="#" class="nav-logo"><img src="~/images/logo.png" alt="ScanX Logo"></a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    }
+
 
     <!-- ✅ Main Content -->
     <main role="main" class="container mt-5">
@@ -26,9 +46,17 @@
     </main>
 
     <!-- ✅ Footer -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        &copy; 2025 ScanX - All Rights Reserved
-    </footer>
+    @{
+        var hideFooter = Context.Request.Path.StartsWithSegments("/Dashboard");
+    }
+    @if (!hideFooter)
+    {
+
+        <footer class="bg-dark text-white text-center py-3 mt-5">
+            &copy; 2025 ScanX - All Rights Reserved
+        </footer>
+    }
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
