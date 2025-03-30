@@ -1,5 +1,4 @@
-﻿
-@* @model SCANX2.Models.User *@
+﻿@* @model SCANX2.Models.User *@
 
 @* <!DOCTYPE html> *@
 @* <html lang="en"> *@
@@ -104,84 +103,62 @@
 @* </body> *@
 
 @* </html> *@
-
+@* signup.cshtml *@
 
 @{
     ViewData["Title"] = "Sign Up - ScanX";
 }
+<body>
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center fw-bold">Create Your Account</h2>
+        <p class="text-center text-muted">Join ScanX and simplify your note-taking.</p>
 
-<div class="signup-container">
-    <!-- ✅ Glassmorphism Card -->
-    <div class="signup-card">
-        <h2 class="fw-bold text-center">Create an Account</h2>
-        <p class="text-center text-muted">Start using ScanX today!</p>
-
-        <!-- ✅ Sign Up Form -->
-        <form>
-            <div class="form-group">
-                <label for="fullName">Full Name</label>
-                <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
+        <form asp-controller="Account" asp-action="Register" method="post">
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Name:</label>
+                <input type="text" name="name" class="form-control" required />
             </div>
-
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Email:</label>
+                <input type="email" name="email" class="form-control" required />
             </div>
-
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Create a password">
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Password:</label>
+                <input type="password" name="password" class="form-control" required />
             </div>
-
-            <button type="submit" class="btn btn-dark btn-lg w-100 mt-3">Sign Up</button>
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
         </form>
 
-        <!-- ✅ Already have an account? -->
-        <p class="text-center mt-3">
-            Already have an account? <a href="/Account/Login" class="text-primary">Log in</a>
-        </p>
+        <p class="text-center mt-3">Already have an account? <a href="/Account/Login">Log in</a></p>
     </div>
 </div>
-
-<!-- ✅ CSS Styling -->
+</body>
 <style>
-    /* ✅ Centered Container */
-    .signup-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 80vh;
-        background: #f4f4f4;
-        padding: 20px;
+    /* ✅ Center the form on the page */
+    .container {
+        max-width: 500px;
+        height : 50vh;
     }
 
-    /* ✅ Glassmorphism Card */
-    .signup-card {
+    .card {
         width: 100%;
-        max-width: 400px;
-        background: rgba(255, 255, 255, 0.3);
-        backdrop-filter: blur(10px);
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
     }
 
-    /* ✅ Form Fields */
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-control {
+    .btn-primary {
+        background-color: #000000;
+        border: none;
+        padding: 10px;
+        font-weight: bold;
         border-radius: 10px;
-        padding: 12px;
+        transition: 0.3s;
     }
 
-    /* ✅ Button */
-    .btn-dark {
-        border-radius: 10px;
-        font-size: 18px;
-    }
-
-  
+        .btn-primary:hover {
+            background-color: forestgreen;
+        }
 </style>
-
