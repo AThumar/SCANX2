@@ -19,7 +19,7 @@
     <div class="main-content">
         <h1>Welcome to your Dashboard</h1>
         <p>Manage your PDFs, notes, and workspace efficiently.</p>
-        <div id="pdf-display" style="margin-top: 20px;">
+        <div id="pdf-display" class="pdf-grid" style="margin-top: 20px;">
             <ul id="pdf-list"></ul> <!-- ✅ This is the missing element! -->
         </div>
 
@@ -38,6 +38,37 @@
     </div>
 </div>
 <style>
+    .pdf-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .pdf-card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        transition: transform 0.2s ease;
+        cursor: pointer;
+    }
+
+        .pdf-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .pdf-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .pdf-title {
+        font-weight: 600;
+        color: #333;
+    }
+
     /* ✅ Main Layout */
     .dashboard-container {
         display: flex;
@@ -212,22 +243,25 @@
         .catch(error => console.error("❌ Upload Error:", error));
     }
 
-    // ✅ Fetch and display uploaded PDFs
-    // function displayUploadedFiles() {
+    //     function displayUploadedFiles() {
     //     fetch("/Pdf/Index")
-    //     .then(response => response.json()) Expect JSON response
+    //     .then(response => response.json()) ✅ Expect JSON response
     //     .then(files => {
     //         var pdfList = document.getElementById("pdf-list");
-    //         pdfList.innerHTML = ""; Clear the list
+    //         pdfList.innerHTML = ""; ✅ Clear the list before adding new entries
+
+    //         if (files.length === 0) {
+    //             pdfList.innerHTML = "<li>No PDFs uploaded yet.</li>";
+    //         }
 
     //         files.forEach(file => {
     //             var listItem = document.createElement("li");
     //             listItem.className = "file-item";
 
     //             var link = document.createElement("a");
-    //             link.href = "/Pdf/ViewPDF?fileName=" + encodeURIComponent(file);
+    //             link.href = "/uploads/" + encodeURIComponent(file); ✅ Use correct path
     //             link.target = "_blank"; Open in a new tab
-    //             link.innerHTML = `✔ ${file}`;
+    //             link.innerHTML = `📄 ${file}`;
 
     //             listItem.appendChild(link);
     //             pdfList.appendChild(listItem);
@@ -237,29 +271,34 @@
     // }
         function displayUploadedFiles() {
         fetch("/Pdf/Index")
-        .then(response => response.json()) // ✅ Expect JSON response
-        .then(files => {
-            var pdfList = document.getElementById("pdf-list");
-            pdfList.innerHTML = ""; // ✅ Clear the list before adding new entries
+            .then(response => response.json())
+            .then(files => {
+                const container = document.getElementById("pdf-display");
+                container.innerHTML = ""; // Clear existing content
 
-            if (files.length === 0) {
-                pdfList.innerHTML = "<li>No PDFs uploaded yet.</li>";
-            }
+                files.forEach(file => {
+                    const card = document.createElement("div");
+                    card.className = "pdf-card";
 
-            files.forEach(file => {
-                var listItem = document.createElement("li");
-                listItem.className = "file-item";
+                    const icon = document.createElement("div");
+                    icon.className = "pdf-icon";
+                    icon.innerHTML = "📄"; // or use an <img> for icon
 
-                var link = document.createElement("a");
-                link.href = "/uploads/" + encodeURIComponent(file); // ✅ Use correct path
-                link.target = "_blank"; // Open in a new tab
-                link.innerHTML = `📄 ${file}`;
+                    const title = document.createElement("div");
+                    title.className = "pdf-title";
+                    title.innerText = file.replace(".pdf", "");
 
-                listItem.appendChild(link);
-                pdfList.appendChild(listItem);
-            });
-        })
-        .catch(error => console.error("❌ Fetch Error:", error));
+                    const link = document.createElement("a");
+                    link.href = "/Pdf/ViewPDF?fileName=" + encodeURIComponent(file);
+                    link.target = "_blank";
+                    link.appendChild(icon);
+                    link.appendChild(title);
+
+                    card.appendChild(link);
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => console.error("❌ Fetch Error:", error));
     }
 
 
