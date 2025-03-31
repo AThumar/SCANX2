@@ -4,16 +4,21 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting; // ✅ Required for IWebHostEnvironment
 
 namespace SCANX2.Controllers
 {
     public class PdfController : Controller
     {
         private readonly string uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+        private readonly IWebHostEnvironment _hostingEnvironment; // ✅ Add this
 
-        public PdfController()
+        public PdfController(IWebHostEnvironment hostingEnvironment)
         {
-            // ✅ Ensure the "uploads" folder exists
+            _hostingEnvironment = hostingEnvironment;
+            uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+
+            // Ensure the uploads folder exists
             if (!Directory.Exists(uploadPath))
             {
                 Directory.CreateDirectory(uploadPath);
@@ -73,6 +78,7 @@ namespace SCANX2.Controllers
             }
         }
 
+        [HttpGet]
         public IActionResult ViewPDF(string fileName)
         {
             if (string.IsNullOrEmpty(fileName))
@@ -84,11 +90,11 @@ namespace SCANX2.Controllers
 
             if (!System.IO.File.Exists(filePath))
             {
-                return NotFound($"File not found at: {filePath}");
+                return NotFound($"File not found: {filePath}");
             }
 
             var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            return File(stream, "application/pdf", fileName);
+            return File(stream, "application/pdf"); // ✅ This will open in the browser
         }
     }
 }

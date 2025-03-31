@@ -269,7 +269,7 @@
     //     })
     //     .catch(error => console.error("❌ Fetch Error:", error));
     // }
-        function displayUploadedFiles() {
+           function displayUploadedFiles() {
         fetch("/Pdf/Index")
             .then(response => response.json())
             .then(files => {
@@ -282,7 +282,7 @@
 
                     const icon = document.createElement("div");
                     icon.className = "pdf-icon";
-                    icon.innerHTML = "📄"; // or use an <img> for icon
+                    icon.innerHTML = "📄"; // Use an image/icon if needed
 
                     const title = document.createElement("div");
                     title.className = "pdf-title";
@@ -290,16 +290,23 @@
 
                     const link = document.createElement("a");
                     link.href = "/Pdf/ViewPDF?fileName=" + encodeURIComponent(file);
-                    link.target = "_blank";
-                    link.appendChild(icon);
-                    link.appendChild(title);
+                    link.target = "_blank"; // Opens in a new tab
+                    link.rel = "noopener noreferrer"; // Security best practice
 
-                    card.appendChild(link);
+                    card.appendChild(icon);
+                    card.appendChild(title);
+
+                    // Instead of using <a>, add an onclick event
+                    card.addEventListener("click", function () {
+                        window.open(link.href, "_blank");
+                    });
+
                     container.appendChild(card);
                 });
             })
             .catch(error => console.error("❌ Fetch Error:", error));
     }
+
 
 
 </script>
