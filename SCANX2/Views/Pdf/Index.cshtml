@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "PDF Dashboard";
+}
+
+<h1>PDF Dashboard</h1>
+
+<!-- ✅ PDF Upload Form -->
+<form asp-action="Upload" asp-controller="Pdf" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="application/pdf" required />
+    <button type="submit">Upload PDF</button>
+</form>
+
+@if (ViewBag.PdfFiles != null && ViewBag.PdfFiles.Length > 0)
+{
+    <h2>Uploaded PDFs:</h2>
+    <ul>
+        @foreach (var file in ViewBag.PdfFiles)
+        {
+            var fileName = System.IO.Path.GetFileName(file);
+            <li>
+                <a asp-action="ViewPDF" asp-controller="Pdf" asp-route-fileName="@fileName" target="_blank">
+                    📄 @fileName
+                </a>
+            </li>
+        }
+    </ul>
+}

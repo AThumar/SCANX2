@@ -19,7 +19,10 @@
     <div class="main-content">
         <h1>Welcome to your Dashboard</h1>
         <p>Manage your PDFs, notes, and workspace efficiently.</p>
-        <div id="pdf-display" style="margin-top: 20px;"></div>
+        <div id="pdf-display" style="margin-top: 20px;">
+            <ul id="pdf-list"></ul> <!-- ✅ This is the missing element! -->
+        </div>
+
 
     </div>
 </div>
@@ -169,6 +172,9 @@
     }
 </style>
 <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        displayUploadedFiles(); // ✅ Load existing PDFs on page load
+    });
     // ✅ Open the file upload dialog
     function openUploadDialog() {
         document.getElementById("uploadModal").style.display = "flex";
@@ -179,60 +185,82 @@
         document.getElementById("uploadModal").style.display = "none";
     }
 
-    // ✅ Handle PDF Upload
-    //    ✅ Handle Multiple PDF Uploads
-    // function uploadPDFs() {
-    //     var fileInput = document.getElementById("pdfInput");
-    //     var files = fileInput.files;
 
-    //     if (files.length > 0) {
-
-    //         for (let i = 0; i < files.length; i++) {
-    //                         var fileList = "<p>📄 Uploaded PDFs:</p><ul>";
-
-    //             fileList += `<li class="file-item">✔ ${files[i].name}</li>`;
-    //         }
-
-    //         fileList += "</ul>";
-    // document.getElementById("pdf-display").innerHTML += fileList;
-    //             closeUploadDialog(); Close the modal after uploading
-    //     } else {
-    //         alert("Please select at least one PDF file.");
-    //     }
-    // }
-        function uploadPDFs() {
+           // ✅ Upload PDF to server
+    function uploadPDFs() {
         var fileInput = document.getElementById("pdfInput");
-        var files = fileInput.files;
-        var pdfDisplay = document.getElementById("pdf-display");
+        var file = fileInput.files[0];
 
-        if (files.length > 0) {
-            // ✅ Add heading only if it doesn't exist
-            if (!document.getElementById("pdf-heading")) {
-                var heading = document.createElement("p");
-                heading.id = "pdf-heading";
-                heading.innerHTML = "📄 Uploaded PDFs:";
-                pdfDisplay.appendChild(heading);
+        if (!file) {
+            alert("Please select a PDF file.");
+            return;
+        }
 
-                var fileList = document.createElement("ul");
-                fileList.id = "pdf-list"; // Assign an ID to the list
-                pdfDisplay.appendChild(fileList);
+        var formData = new FormData();
+        formData.append("file", file);
+
+        fetch("/Pdf/Upload", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        .then(() => {
+            alert("📂 PDF uploaded successfully!");
+            closeUploadDialog();
+            displayUploadedFiles(); // ✅ Refresh file list
+        })
+        .catch(error => console.error("❌ Upload Error:", error));
+    }
+
+    // ✅ Fetch and display uploaded PDFs
+    // function displayUploadedFiles() {
+    //     fetch("/Pdf/Index")
+    //     .then(response => response.json()) Expect JSON response
+    //     .then(files => {
+    //         var pdfList = document.getElementById("pdf-list");
+    //         pdfList.innerHTML = ""; Clear the list
+
+    //         files.forEach(file => {
+    //             var listItem = document.createElement("li");
+    //             listItem.className = "file-item";
+
+    //             var link = document.createElement("a");
+    //             link.href = "/Pdf/ViewPDF?fileName=" + encodeURIComponent(file);
+    //             link.target = "_blank"; Open in a new tab
+    //             link.innerHTML = `✔ ${file}`;
+
+    //             listItem.appendChild(link);
+    //             pdfList.appendChild(listItem);
+    //         });
+    //     })
+    //     .catch(error => console.error("❌ Fetch Error:", error));
+    // }
+        function displayUploadedFiles() {
+        fetch("/Pdf/Index")
+        .then(response => response.json()) // ✅ Expect JSON response
+        .then(files => {
+            var pdfList = document.getElementById("pdf-list");
+            pdfList.innerHTML = ""; // ✅ Clear the list before adding new entries
+
+            if (files.length === 0) {
+                pdfList.innerHTML = "<li>No PDFs uploaded yet.</li>";
             }
 
-            // ✅ Get the existing file list
-            var fileList = document.getElementById("pdf-list");
-
-            // ✅ Append new files
-            for (let i = 0; i < files.length; i++) {
+            files.forEach(file => {
                 var listItem = document.createElement("li");
                 listItem.className = "file-item";
-                listItem.innerHTML = `✔ ${files[i].name}`;
-                fileList.appendChild(listItem);
-            }
 
-            closeUploadDialog(); // Close the modal after uploading
-        } else {
-            alert("Please select at least one PDF file.");
-        }
+                var link = document.createElement("a");
+                link.href = "/uploads/" + encodeURIComponent(file); // ✅ Use correct path
+                link.target = "_blank"; // Open in a new tab
+                link.innerHTML = `📄 ${file}`;
+
+                listItem.appendChild(link);
+                pdfList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error("❌ Fetch Error:", error));
     }
+
 
 </script>
