@@ -1,0 +1,147 @@
+﻿@{
+    ViewData["Title"] = "About ScanX";
+}
+
+<section class="about-section">
+    <div class="about-container">
+        <!-- Left Side - Text Content -->
+        <div class="about-content">
+            <h2>🚀 Welcome to <span>ScanX</span></h2>
+            <p class="about-description">
+                **ScanX** is the ultimate AI-powered PDF and document management tool that simplifies how you **upload, view, edit, and organize** your files.
+                Whether you're a student, professional, or researcher, **ScanX helps you work smarter, not harder.**
+            </p>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <p><strong>Fast & Secure Uploads</strong> - Upload and access your files instantly.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📂</span>
+                    <p><strong>Smart PDF Management</strong> - Organize and categorize your files effortlessly.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🖋️</span>
+                    <p><strong>Advanced Annotations</strong> - Highlight, comment, and edit with ease.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">☁️</span>
+                    <p><strong>Cloud Sync</strong> - Access your files anytime, anywhere.</p>
+                </div>
+            </div>
+
+            <a href="/Home/Pricing" class="cta-btn">✨ Get Started Now</a>
+        </div>
+
+        <!-- Right Side - Image -->
+        <div class="about-image">
+            <img src="~/images/about.png" alt="About ScanX">
+        </div>
+    </div>
+</section>
+<style>
+    /* 🔹 About Section */
+    .about-section {
+        background: linear-gradient(to right, #f8f9fa, #ffffff);
+        padding: 100px 10%;
+        text-align: center;
+        position: relative;
+    }
+
+    /* 🔹 Layout */
+    .about-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: auto;
+        flex-wrap: wrap;
+    }
+
+    /* 🔹 Left Side - Text Content */
+    .about-content {
+        flex: 1;
+        text-align: left;
+        animation: fadeInLeft 1s ease-in-out;
+    }
+
+        .about-content h2 {
+            font-size: 40px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+            .about-content h2 span {
+                color: #007bff; /* Blue accent */
+            }
+
+    .about-description {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* 🔹 Features List */
+    .features-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        padding: 12px 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+        .feature-item:hover {
+            transform: scale(1.05);
+        }
+
+    .feature-icon {
+        font-size: 24px;
+        margin-right: 12px;
+        color: #007bff;
+    }
+
+    /* 🔹 Right Side - Image */
+    .about-image {
+        flex: 1;
+        text-align: center;
+        animation: fadeInRight 1s ease-in-out;
+    }
+
+        .about-image img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    /* 🔹 Call-to-Action Button */
+    .cta-btn {
+        background: #007bff;
+        color: white;
+        padding: 14px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 6px;
+        display: inline-block;
+        transition: 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+        .cta-btn:hover {
+            background: #0056b3;
+            transform: translateY(-3px);
+        }
+</style>
