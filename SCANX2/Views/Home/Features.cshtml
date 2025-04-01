@@ -1,35 +1,147 @@
-﻿@{
+﻿@* @{ *@
+@*     ViewData["Title"] = "ScanX Features"; *@
+@* } *@
+
+@* <!-- ✅ Features Section --> *@
+@* <section class="features-section text-center"> *@
+@*     <h2 class="fw-bold">ScanX Features</h2> *@
+@*     <p class="text-muted"> *@
+@*         Transform how you work with PDFs. ScanX combines powerful document management with intelligent note-taking. *@
+@*     </p> *@
+
+@*     <div class="row"> *@
+@*         <!-- ✅ Feature Card --> *@
+@*         <div class="col-md-4"> *@
+@*             <div class="feature-card"> *@
+@*                 <h4>📂 PDF Management</h4> *@
+@*                 <p>Upload, organize, and access your PDFs in a single location with powerful indexing.</p> *@
+@*                 <a href="#">Access your documents anywhere.</a> *@
+@*             </div> *@
+@*         </div> *@
+@*         <div class="col-md-4"> *@
+@*             <div class="feature-card"> *@
+@*                 <h4>📝 Smart Notes</h4> *@
+@*                 <p>Take detailed notes, highlight, and add comments directly on your PDFs.</p> *@
+@*                 <a href="#">Notes sync automatically across devices.</a> *@
+@*             </div> *@
+@*         </div> *@
+@*         <div class="col-md-4"> *@
+@*             <div class="feature-card"> *@
+@*                 <h4>🔍 Advanced Search</h4> *@
+@*                 <p>Find any document instantly with our search functionality, filtering by date, content, and tags.</p> *@
+@*                 <a href="#">Save hours finding documents.</a> *@
+@*             </div> *@
+@*         </div> *@
+@*     </div> *@
+@* </section> *@
+
+@* <!-- ✅ Seamless PDF Experience --> *@
+@* <section class="pdf-experience text-center mt-5"> *@
+@*     <h3>Seamless PDF Experience</h3> *@
+@*     <p class="text-muted">ScanX reimagines how you work with PDFs with drag-and-drop uploads, smart folders, and sharing.</p> *@
+
+@*     <ul class="text-start mx-auto" style="max-width: 600px;"> *@
+@*         <li>✅ Upload multiple PDFs with drag and drop</li> *@
+@*         <li>✅ Organize documents with smart folders</li> *@
+@*         <li>✅ Access your library across all devices</li> *@
+@*         <li>✅ Share documents with customizable permissions</li> *@
+@*     </ul> *@
+@* </section> *@
+
+@* <!-- ✅ Call-to-Action (CTA) --> *@
+@* <section class="text-center mt-5"> *@
+@*     <h3>Ready to Transform Your Document Workflow?</h3> *@
+@*     <p class="text-muted">Join thousands of professionals using ScanX.</p> *@
+@*     <a class="btn btn-dark btn-lg" href="#">Get Started for Free</a> *@
+@*     <a class="btn btn-light btn-lg" href="#">See Pricing Plans</a> *@
+@* </section> *@
+
+
+
+@*         <style> *@
+@*     /* ✅ Features Section */ *@
+@*     .features-section { *@
+@*         padding: 50px 0; *@
+@*     } *@
+
+@*         .features-section h2 { *@
+@*             font-size: 32px; *@
+@*             margin-bottom: 15px; *@
+@*         } *@
+
+@*     .feature-card { *@
+@*         background: #f9f9f9; *@
+@*         padding: 20px; *@
+@*         border-radius: 10px; *@
+@*         margin-top: 15px; *@
+@*         box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1); *@
+@*     } *@
+
+@*         .feature-card h4 { *@
+@*             font-size: 20px; *@
+@*             margin-bottom: 10px; *@
+@*         } *@
+
+@*         .feature-card a { *@
+@*             color: #007bff; *@
+@*             font-weight: bold; *@
+@*         } *@
+
+@*     /* ✅ PDF Experience */ *@
+@*     .pdf-experience { *@
+@*         background: #fff; *@
+@*         padding: 50px 0; *@
+@*     } *@
+
+@*     /* ✅ CTA Section */ *@
+@*     .btn-dark { *@
+@*         background: black; *@
+@*         padding: 12px 25px; *@
+@*         font-size: 18px; *@
+@*     } *@
+
+@*     .btn-light { *@
+@*         background: #E5E7EB; *@
+@*         padding: 12px 25px; *@
+@*         font-size: 18px; *@
+@*     } *@
+
+@*         </style> *@
+
+
+
+@{
     ViewData["Title"] = "ScanX Features";
 }
 
 <!-- ✅ Features Section -->
 <section class="features-section text-center">
-    <h2 class="fw-bold">ScanX Features</h2>
-    <p class="text-muted">
+    <h2 class="fw-bold display-4">🚀 ScanX Features</h2>
+    <p class="text-muted lead">
         Transform how you work with PDFs. ScanX combines powerful document management with intelligent note-taking.
     </p>
 
-    <div class="row">
+    <div class="row g-4 mt-4">
         <!-- ✅ Feature Card -->
         <div class="col-md-4">
-            <div class="feature-card">
-                <h4>📂 PDF Management</h4>
+            <div class="feature-card shadow-sm">
+                <h4 class="fw-bold">📂 PDF Management</h4>
                 <p>Upload, organize, and access your PDFs in a single location with powerful indexing.</p>
-                <a href="#">Access your documents anywhere.</a>
+                <a href="#" class="feature-link">Access your documents anywhere</a>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="feature-card">
-                <h4>📝 Smart Notes</h4>
+            <div class="feature-card shadow-sm">
+                <h4 class="fw-bold">📝 Smart Notes</h4>
                 <p>Take detailed notes, highlight, and add comments directly on your PDFs.</p>
-                <a href="#">Notes sync automatically across devices.</a>
+                <a href="#" class="feature-link">Notes sync automatically across devices</a>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="feature-card">
-                <h4>🔍 Advanced Search</h4>
+            <div class="feature-card shadow-sm">
+                <h4 class="fw-bold">🔍 Advanced Search</h4>
                 <p>Find any document instantly with our search functionality, filtering by date, content, and tags.</p>
-                <a href="#">Save hours finding documents.</a>
+                <a href="#" class="feature-link">Save hours finding documents</a>
             </div>
         </div>
     </div>
@@ -37,73 +149,107 @@
 
 <!-- ✅ Seamless PDF Experience -->
 <section class="pdf-experience text-center mt-5">
-    <h3>Seamless PDF Experience</h3>
-    <p class="text-muted">ScanX reimagines how you work with PDFs with drag-and-drop uploads, smart folders, and sharing.</p>
+    <h3 class="fw-bold">📑 Seamless PDF Experience</h3>
+    <p class="text-muted lead">ScanX reimagines how you work with PDFs with drag-and-drop uploads, smart folders, and sharing.</p>
 
-    <ul class="text-start mx-auto" style="max-width: 600px;">
-        <li>✅ Upload multiple PDFs with drag and drop</li>
-        <li>✅ Organize documents with smart folders</li>
-        <li>✅ Access your library across all devices</li>
-        <li>✅ Share documents with customizable permissions</li>
+    <ul class="text-start mx-auto list-group list-group-flush mt-3" style="max-width: 600px;">
+        <li class="list-group-item"><span class="check-icon">✅</span> Upload multiple PDFs with drag and drop</li>
+        <li class="list-group-item"><span class="check-icon">✅</span> Organize documents with smart folders</li>
+        <li class="list-group-item"><span class="check-icon">✅</span> Access your library across all devices</li>
+        <li class="list-group-item"><span class="check-icon">✅</span> Share documents with customizable permissions</li>
     </ul>
 </section>
 
 <!-- ✅ Call-to-Action (CTA) -->
-<section class="text-center mt-5">
-    <h3>Ready to Transform Your Document Workflow?</h3>
-    <p class="text-muted">Join thousands of professionals using ScanX.</p>
-    <a class="btn btn-dark btn-lg" href="#">Get Started for Free</a>
-    <a class="btn btn-light btn-lg" href="#">See Pricing Plans</a>
+<section class="text-center mt-5 cta-section">
+    <h3 class="fw-bold">Ready to Transform Your Document Workflow?</h3>
+    <p class="text-muted lead">Join thousands of professionals using ScanX.</p>
+    <div class="mt-3">
+        <a class="btn btn-gradient btn-lg me-2" href="#">Get Started for Free</a>
+        <a class="btn btn-light btn-lg" href="#">See Pricing Plans</a>
+    </div>
 </section>
 
-
-
-        <style>
+<!-- ✅ Styles -->
+<style>
     /* ✅ Features Section */
     .features-section {
-        padding: 50px 0;
+        padding: 60px 0;
     }
-
-        .features-section h2 {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
 
     .feature-card {
         background: #f9f9f9;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 15px;
-        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        border-radius: 12px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        text-align: center;
     }
 
-        .feature-card h4 {
-            font-size: 20px;
-            margin-bottom: 10px;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
         }
 
-        .feature-card a {
+        .feature-card h4 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card .feature-link {
             color: #007bff;
             font-weight: bold;
+            text-decoration: none;
+            transition: color 0.2s;
         }
+
+            .feature-card .feature-link:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
 
     /* ✅ PDF Experience */
     .pdf-experience {
-        background: #fff;
-        padding: 50px 0;
+        background: #f8f9fa;
+        padding: 60px 0;
+    }
+
+    .list-group-item {
+        border: none;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+    }
+
+    .check-icon {
+        font-size: 22px;
+        margin-right: 10px;
+        color: #28a745;
     }
 
     /* ✅ CTA Section */
-    .btn-dark {
-        background: black;
-        padding: 12px 25px;
-        font-size: 18px;
+    .cta-section {
+        padding: 60px 0;
     }
+
+    .btn-gradient {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: #fff;
+        padding: 14px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        transition: background 0.3s ease-in-out;
+    }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #0056b3, #004494);
+            color: #fff;
+        }
 
     .btn-light {
         background: #E5E7EB;
-        padding: 12px 25px;
+        padding: 14px 30px;
         font-size: 18px;
+        border-radius: 8px;
     }
-
-        </style>
+</style>
