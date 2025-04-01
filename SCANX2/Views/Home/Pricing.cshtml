@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Pricing";
+}
+
+<div class="container">
+<center>
+    <h2>Plans</h2>
+    <p>Update your plan to upload multiple PDFs and take notes.</p>
+    </center>
+    <div class="pricing-cards">
+        <div class="card">
+            <h3>Free</h3>
+            <p>$0 / per month</p>
+            <button class="btn btn-dark">Get Started</button>
+            <ul>
+                <li>✔ 5 PDF Uploads</li>
+                <li>✔ Unlimited Notes Taking</li>
+                <li>✔ Email Support</li>
+                <li>✔ Help Center Access</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Unlimited</h3>
+            <p>$257 / one time</p>
+            <button class="btn btn-dark">Get Started</button>
+            <ul>
+                <li>✔ Unlimited PDF Uploads</li>
+                <li>✔ Unlimited Notes Taking</li>
+                <li>✔ Email Support</li>
+                <li>✔ Help Center Access</li>
+                <li>✔ Priority Security</li>
+            </ul>
+            <button class="btn btn-light">Google Pay</button>
+        </div>
+    </div>
+</div>
+<style>
+    .pricing-cards {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+        text-align: center;
+        background: #f9f9f9;
+    }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+            .card ul li {
+                margin: 5px 0;
+            }
+
+    .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+</style>

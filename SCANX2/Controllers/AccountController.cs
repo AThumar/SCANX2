@@ -34,6 +34,13 @@ public class AccountController : Controller
 
     //}
     [HttpPost]
+    public IActionResult Logout()
+    {
+        HttpContext.Session.Clear(); // Clear session
+        return RedirectToAction("Index", "Home"); // Redirect to Landing Page
+    }
+
+    [HttpPost]
     public IActionResult Login(string Email, string Password)
     {
         var user = _context.Users.FirstOrDefault(u => u.Email == Email);
