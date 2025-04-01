@@ -12,6 +12,11 @@ namespace SCANX2.Controllers
         {
             return View();
         }
+        public IActionResult ViewPDF(string fileName)
+        {
+            ViewBag.FilePath = Url.Content("~/pdfs/" + fileName); // Ensure the PDF exists in /wwwroot/pdfs/
+            return View();
+        }
 
     }
 }

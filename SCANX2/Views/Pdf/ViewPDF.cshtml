@@ -1,4 +1,60 @@
-﻿@{
+﻿@* @{ *@
+@*     ViewData["Title"] = "View PDF"; *@
+@* } *@
+
+@* <h1>PDF Viewer</h1> *@
+
+@* <!-- ✅ PDF.js Library --> *@
+@* <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script> *@
+
+@* <!-- ✅ PDF Viewer --> *@
+@* <canvas id="pdfCanvas"></canvas> *@
+
+@* <!-- ✅ Navigation Buttons --> *@
+@* <div> *@
+@*     <button onclick="prevPage()">⬅ Previous</button> *@
+@*     <span>Page: <span id="pageNum">1</span> / <span id="pageCount"></span></span> *@
+@*     <button onclick="nextPage()">Next ➡</button> *@
+@* </div> *@
+
+@* <script> *@
+@*     let pdfUrl = "@ViewBag.FilePath"; *@
+@*     let pdfDoc = null, pageNum = 1, canvas = document.getElementById("pdfCanvas"), ctx = canvas.getContext("2d"); *@
+
+@*     function loadPDF(url) { *@
+@*         pdfjsLib.getDocument(url).promise.then(pdf => { *@
+@*             pdfDoc = pdf; *@
+@*             document.getElementById("pageCount").textContent = pdfDoc.numPages; *@
+@*             renderPage(pageNum); *@
+@*         }); *@
+@*     } *@
+
+@*     function renderPage(num) { *@
+@*         pdfDoc.getPage(num).then(page => { *@
+@*             let viewport = page.getViewport({ scale: 1.5 }); *@
+@*             canvas.width = viewport.width; *@
+@*             canvas.height = viewport.height; *@
+@*             let renderContext = { canvasContext: ctx, viewport: viewport }; *@
+@*             page.render(renderContext); *@
+@*             document.getElementById("pageNum").textContent = num; *@
+@*         }); *@
+@*     } *@
+
+@*     function prevPage() { *@
+@*         if (pageNum <= 1) return; *@
+@*         pageNum--; *@
+@*         renderPage(pageNum); *@
+@*     } *@
+
+@*     function nextPage() { *@
+@*         if (pageNum >= pdfDoc.numPages) return; *@
+@*         pageNum++; *@
+@*         renderPage(pageNum); *@
+@*     } *@
+
+@*     loadPDF(pdfUrl); *@
+@* </script> *@
+@{
     ViewData["Title"] = "View PDF";
 }
 
@@ -18,39 +74,51 @@
 </div>
 
 <script>
-    let pdfUrl = "@ViewBag.FilePath";
-    let pdfDoc = null, pageNum = 1, canvas = document.getElementById("pdfCanvas"), ctx = canvas.getContext("2d");
+    let pdfUrl = "@Html.Raw(ViewBag.FilePath)";  // Get PDF file path from ViewBag
+    let pdfDoc = null,
+        pageNum = 1,
+        canvas = document.getElementById("pdfCanvas"),
+        ctx = canvas.getContext("2d");
 
     function loadPDF(url) {
         pdfjsLib.getDocument(url).promise.then(pdf => {
             pdfDoc = pdf;
             document.getElementById("pageCount").textContent = pdfDoc.numPages;
             renderPage(pageNum);
+        }).catch(error => {
+            console.error("Error loading PDF:", error);
         });
     }
 
     function renderPage(num) {
         pdfDoc.getPage(num).then(page => {
-            let viewport = page.getViewport({ scale: 1.5 });
+            let viewport = page.getViewport({ scale: 1.5 });  // Adjust scale if needed
             canvas.width = viewport.width;
             canvas.height = viewport.height;
-            let renderContext = { canvasContext: ctx, viewport: viewport };
+
+            let renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
+
             page.render(renderContext);
             document.getElementById("pageNum").textContent = num;
         });
     }
 
     function prevPage() {
-        if (pageNum <= 1) return;
-        pageNum--;
-        renderPage(pageNum);
+        if (pageNum > 1) {
+            pageNum--;
+            renderPage(pageNum);
+        }
     }
 
     function nextPage() {
-        if (pageNum >= pdfDoc.numPages) return;
-        pageNum++;
-        renderPage(pageNum);
+        if (pageNum < pdfDoc.numPages) {
+            pageNum++;
+            renderPage(pageNum);
+        }
     }
 
-    loadPDF(pdfUrl);
+    loadPDF(pdfUrl);  // Load the PDF when the page is loaded
 </script>

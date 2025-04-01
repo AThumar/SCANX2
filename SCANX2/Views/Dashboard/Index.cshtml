@@ -12,10 +12,13 @@
             <li><a href="#" onclick="openUploadDialog()">📂 Upload PDF</a></li>
             <li><a href="#">📌 Workspace</a></li>
             <!-- Sidebar Upgrade Button -->
-           <li><button id="upgradeBtn" class="btn btn-primary" onclick="location.href='@Url.Action("Pricing", "Home")'">
-                Upgrade
+            <li>
+                <button id="upgradeBtn" class="upgrade-btn"
+                        onclick="location.href='@Url.Action("Pricing", "Home")'">
+                    Upgrade
                 </button>
             </li>
+
         </ul>
     </nav>
 
@@ -45,15 +48,48 @@
     </div>
 </div>
 <style>
-    .btn btn-primary{
-        background-color: #007BFF;
+    /* Ensure the list item does not restrict the button */
+    .sidebar li {
+        width: 100%; /* Make list items full width */
+        text-align: center; /* Center align content */
+    }
+
+    /* Match the size of "Upload PDF" & "Workspace" */
+    .upgrade-btn {
+        background: #333;
         color: white;
         border: none;
-        padding: 10px 20px;
+        padding: 12px 20px;
         font-size: 16px;
+        font-weight: bold;
         border-radius: 6px;
         cursor: pointer;
-        transition: 0.3s;
+        width: 100%; /* Ensure full width */
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        transition: 0.3s ease-in-out;
+    }
+
+        /* Hover effect */
+        .upgrade-btn:hover {
+            background: #0056b3;
+        }
+
+    .btn btn-primary{
+        background: #007BFF;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%; /* Ensure full width */
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        transition: 0.3s ease-in-out;
     }
     .logout-container {
         position: absolute;
@@ -83,6 +119,7 @@
         padding: 20px;
     }
 
+
     .pdf-card {
         background: #fff;
         border-radius: 10px;
@@ -102,6 +139,10 @@
         margin-bottom: 10px;
     }
 
+    .sidebar li {
+        width: 100%; /* Make list items full width */
+        text-align: center; /* Center align content */
+    }
     .pdf-title {
         font-weight: 600;
         color: #333;
@@ -209,6 +250,8 @@
             padding: 0;
             width: 100%;
         }
+
+   
 
         .sidebar li {
             margin-bottom: 15px;
