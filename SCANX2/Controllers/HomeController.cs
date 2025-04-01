@@ -21,6 +21,9 @@ namespace SCANX2.Controllers
         {
             return View();
         }
-
+        public IActionResult Features()
+        {
+            return View();
+        }
     }
 }
